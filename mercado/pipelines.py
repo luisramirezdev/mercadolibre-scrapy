@@ -8,6 +8,9 @@
 import scrapy
 from scrapy import signals
 from scrapy.exporters import CsvItemExporter
+from scrapy.pipelines.images import ImagesPipeline
+from scrapy.exceptions import DropItem
+from scrapy import Request
 import csv
 
 class MercadoPipeline(object):
@@ -26,7 +29,7 @@ class MercadoPipeline(object):
         self.files[spider] = file
         self.exporter = CsvItemExporter(file)
         self.exporter.fields_to_export = ['titulo', 'folio', 'precio', 'condicion', 'envio', 'ubicacion','opiniones', 'ventas_producto',
-        				'vendedor_url', 'tipo_vendedor', 'reputacion', 'ventas_vendedor']
+        				'vendedor_url', 'tipo_vendedor', 'reputacion', 'ventas_vendedor', 'image_name', 'image_urls']
         self.exporter.start_exporting()
 
     def spider_closed(self, spider):
@@ -37,3 +40,12 @@ class MercadoPipeline(object):
     def process_item(self, item, spider):
         self.exporter.export_item(item)
         return item
+
+class MercadoImagenesPipeline(ImagesPipeline):
+    
+    def get_media_requests(self, item, info):
+        return [Request(x, meta={'image_name': item["image_name"]})
+                for x in item.get('image_urls', [])]
+
+    def file_path(self, request, response=None, info=None):
+        return '%s.jpg' % request.meta['image_name']

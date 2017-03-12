@@ -15,12 +15,18 @@ SPIDER_MODULES = ['mercado.spiders']
 NEWSPIDER_MODULE = 'mercado.spiders'
 
 #CSV IMPORTACION
-ITEM_PIPELINES = {'mercado.pipelines.MercadoPipeline': 300 }
+ITEM_PIPELINES = {'mercado.pipelines.MercadoPipeline': 500,
+					'mercado.pipelines.MercadoImagenesPipeline': 600, }
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'mercado (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
+
+#Imagenes
+IMAGES_STORE = '/URL/DE/TU/DIRECTORIO/imagenes'
+DOWNLOAD_DELAY = 2
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32

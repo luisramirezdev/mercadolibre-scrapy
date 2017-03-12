@@ -22,6 +22,11 @@ class MercadoItem(scrapy.Item):
     opiniones = scrapy.Field()
     ventas_producto = scrapy.Field()
 
+    #imagenes
+    image_urls = scrapy.Field()
+    images = scrapy.Field()
+    image_name = scrapy.Field()
+
 
     #info de la tienda o vendedor
     vendedor_url = scrapy.Field()
