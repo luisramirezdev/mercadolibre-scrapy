@@ -1,4 +1,4 @@
-# Tutorial Scrapy; Extraer informacin de Mercado Libre
+# Tutorial Scrapy; Extraer información de Mercado Libre
 
 Si quieres ver como se realizo este proyecto puedes verlo en video: https://goo.gl/73crqm
 
