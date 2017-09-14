@@ -28,8 +28,8 @@ class MercadoPipeline(object):
         file = open('%s_items.csv' % spider.name, 'w+b')
         self.files[spider] = file
         self.exporter = CsvItemExporter(file)
-        self.exporter.fields_to_export = ['titulo', 'folio', 'precio', 'condicion', 'envio', 'ubicacion','opiniones', 'ventas_producto',
-        				'vendedor_url', 'tipo_vendedor', 'reputacion', 'ventas_vendedor', 'image_name', 'image_urls']
+        self.exporter.fields_to_export = ['titulo', 'modelo', 'marca', 'tecnologia', 'tipo', 'precio', 'condicion', 'envio', 'ubicacion','opiniones',
+        				'vendedor_url', 'tipo_vendedor', 'ventas_vendedor', 'image_name', 'image_urls']
         self.exporter.start_exporting()
 
     def spider_closed(self, spider):
@@ -42,7 +42,7 @@ class MercadoPipeline(object):
         return item
 
 class MercadoImagenesPipeline(ImagesPipeline):
-    
+
     def get_media_requests(self, item, info):
         return [Request(x, meta={'image_name': item["image_name"]})
                 for x in item.get('image_urls', [])]
