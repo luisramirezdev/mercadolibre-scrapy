@@ -25,7 +25,7 @@ ITEM_PIPELINES = {'mercado.pipelines.MercadoPipeline': 500,
 ROBOTSTXT_OBEY = True
 
 #Imagenes
-IMAGES_STORE = '/URL/DE/TU/DIRECTORIO/imagenes'
+IMAGES_STORE = '/Users/lramirez/Desktop/VirtualEnvs/mercadolibre/mercadolibre-scrapy/images'
 DOWNLOAD_DELAY = 2
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)

@@ -14,13 +14,15 @@ class MercadoItem(scrapy.Item):
 
     #info de producto
     titulo = scrapy.Field()
-    folio = scrapy.Field()
+    modelo = scrapy.Field()
+    marca = scrapy.Field()
+    tecnologia = scrapy.Field()
+    tipo = scrapy.Field()
     precio = scrapy.Field()
     condicion = scrapy.Field()
     envio = scrapy.Field()
     ubicacion = scrapy.Field()
     opiniones = scrapy.Field()
-    ventas_producto = scrapy.Field()
 
     #imagenes
     image_urls = scrapy.Field()
@@ -31,7 +33,4 @@ class MercadoItem(scrapy.Item):
     #info de la tienda o vendedor
     vendedor_url = scrapy.Field()
     tipo_vendedor = scrapy.Field()
-    reputacion = scrapy.Field()
     ventas_vendedor = scrapy.Field()
-    
-
